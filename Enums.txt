@@ -1,0 +1,31 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+namespace ConsoleApp1
+
+{
+    public enum Gender : short /* 32767 - (-32768) */
+    {
+        Unknown ,
+        Male,
+        Female
+    }
+    class Program
+    {
+        public static void Main()
+        {
+            string[] names = (string[])Enum.GetNames(typeof(Gender));
+            foreach (string name in names)
+            {
+                Console.WriteLine(name);
+            }
+
+            short[] values = (short[])Enum.GetValues(typeof(Gender));
+            foreach (short value in values)
+            {
+                Console.WriteLine(value);
+            }
+            Console.ReadLine();
+        }
+    }
+}

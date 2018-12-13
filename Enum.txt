@@ -1,0 +1,67 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+namespace ConsoleApp1
+
+{
+    public enum Gender
+    {
+        Unknown,
+        Male,
+        Female
+    }
+    class Program
+    {
+        public static void Main()
+        {
+            Customer[] customers = new Customer[4];
+            customers[0] = new Customer
+            {
+                Name = "AAA",
+                Gender = Gender.Male
+            }; 
+            customers[1] = new Customer
+            {
+                Name = BBB",
+                Gender = Gender.Unknown
+            };
+            customers[2] = new Customer
+            {
+                Name = "CCC",
+                Gender = Gender.Male
+            };
+            customers[3] = new Customer
+            {
+                Name = "DDD",
+                Gender = Gender.Female
+            };
+            StreamWriter sw = new StreamWriter(@"C:\Users\KING\Desktop\now.txt");
+            foreach (Customer customer in customers)
+            {
+                Console.WriteLine("Name: {0} Gender: {1}",customer.Name, getGender(customer.Gender));
+                sw.WriteLine("Name: {0} Gender: {1}", customer.Name, getGender(customer.Gender));
+            }
+            Console.ReadLine();
+            sw.Close();
+        }
+        public static string getGender(Gender Gender)
+        {
+            switch (Gender)
+            {
+                case Gender.Unknown:
+                    return "Unknown";
+                case Gender.Male:
+                    return "Male";
+                case Gender.Female:
+                    return "Female";
+                default:
+                    return "Invalid";
+            }
+        }
+    }
+    public class Customer
+    {
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+    }
+}

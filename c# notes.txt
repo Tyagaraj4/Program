@@ -1,0 +1,8 @@
+Delegates:- Delegates are type safe function pointers
+
+Serilization:- It is the process of converting an obj to the byte code to store 
+the object into the file, Db, memory.
+
+Enums:- Enums are the value types. Makes the program more READABLE & MAINTAINABLE.
+	Strongly typed constants
+

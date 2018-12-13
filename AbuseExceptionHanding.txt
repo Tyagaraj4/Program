@@ -1,0 +1,49 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+namespace ConsoleApp1
+
+{
+    delegate void SimpleDelegates();
+
+    class Program
+    {
+        public static void Main()
+        {
+            try {
+                int num1, num2;
+                Console.WriteLine("Please enter the Numerator");
+                bool IsNumerator = Int32.TryParse(Console.ReadLine(), out num1);
+                if (IsNumerator)
+                {
+                    Console.WriteLine("Please enter the Denominator");
+                    bool IsDenominator = Int32.TryParse(Console.ReadLine(), out num2);
+                    if (IsDenominator && num2 != 0)
+                    {
+                        int Result = num1 / num2;
+                        Console.WriteLine("Result: {0}", Result);
+                    }
+                    else
+                    {
+                        if (num2 == 0)
+                        {
+                            Console.WriteLine("Denomrator Should mpt be Zero");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Please enter the number between {0} to {1}", Int32.MinValue, Int32.MaxValue);
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Please enter the number between {0} to {1}", Int32.MinValue, Int32.MaxValue);
+                }
+                Console.ReadLine();
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
+}

@@ -1,0 +1,36 @@
+using System;
+using System.IO;
+using System.Runtime.Serialization;
+namespace ConsoleApp1
+
+{
+    delegate void SimpleDelegates();
+     
+    class Program
+    {
+        public static void Main(string[] args)
+        {
+            try
+            {
+                throw new UserDefinedExceptionClass("\n Hi this is User Defined Exception Class ");
+            }
+            catch (UserDefinedExceptionClass ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            Console.Read();
+        }
+    }
+    [Serializable]
+    public class UserDefinedExceptionClass : Exception
+    {
+        public UserDefinedExceptionClass(String message) 
+            : base(message) { }
+        public UserDefinedExceptionClass() 
+            : base() { }
+        public UserDefinedExceptionClass(string message, Exception innerException)
+            : base(message, innerException) { }
+        public UserDefinedExceptionClass(SerializationInfo info, StreamingContext context)
+            : base(info, context) { }
+    }
+}
